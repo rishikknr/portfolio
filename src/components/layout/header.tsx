@@ -17,17 +17,16 @@ export default function Header() {
   const pathname = usePathname();
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, href: string) => {
+    e.preventDefault();
+    const targetId = href.substring(1); // Remove '#'
+    const elem = document.getElementById(targetId);
+    
     if (pathname === '/') {
-      e.preventDefault();
-      const targetId = href.substring(2); // Remove '/#'
-      const elem = document.getElementById(targetId);
-      if (elem) {
-        elem.scrollIntoView({
-          behavior: 'smooth',
-        });
-      }
+        elem?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+        // Navigate to home and then scroll
+        window.location.href = `/${href}`;
     }
-    // If not on the homepage, the Link component will handle navigation.
   };
 
   return (
@@ -36,16 +35,27 @@ export default function Header() {
         <nav className="flex items-center gap-4 text-sm sm:gap-6">
           {navItems.map((item) => {
             const isHashLink = item.href.startsWith('/#');
-            const linkHref = isHashLink && pathname !== '/' ? `/${item.href}` : item.href;
             
+            if (isHashLink) {
+              return (
+                 <a
+                  key={item.name}
+                  href={item.href}
+                  onClick={(e) => handleScroll(e, item.href)}
+                  className="cursor-pointer font-medium text-muted-foreground transition-colors hover:text-primary"
+                >
+                  {item.name}
+                </a>
+              )
+            }
+
             return (
               <Link
                 key={item.name}
-                href={linkHref}
-                onClick={isHashLink && pathname === '/' ? (e) => handleScroll(e, item.href) : undefined}
+                href={item.href}
                 className={cn(
                   "font-medium text-muted-foreground transition-colors hover:text-primary",
-                  isHashLink && pathname === '/' && "cursor-pointer"
+                  pathname === item.href && "text-primary"
                 )}
               >
                 {item.name}
