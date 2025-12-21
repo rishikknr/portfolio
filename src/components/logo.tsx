@@ -3,8 +3,8 @@ import { cn } from '@/lib/utils';
 export function Logo({ className, ...props }: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
-      width="120"
-      height="40"
+      width="135"
+      height="45"
       viewBox="0 0 135 45"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
