@@ -1,3 +1,22 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "venture-sanchaya",
+      "description": "Abstract image representing fintech and security.",
+      "imageUrl": "https://images.unsplash.com/photo-1726137065566-153debe32a53?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxmaW50ZWNoJTIwc2VjdXJpdHl8ZW58MHx8fHwxNzY2MzQ1ODUxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "fintech security"
+    },
+    {
+      "id": "venture-revive",
+      "description": "Image representing healthcare in a rural setting.",
+      "imageUrl": "https://images.unsplash.com/photo-1421790082661-8b611e70484b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxydXJhbCUyMGhlYWx0aGNhcmV8ZW58MHx8fHwxNzY2MzQ1ODUxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "rural healthcare"
+    },
+    {
+      "id": "venture-neurodam",
+      "description": "Image showing a dam or water with a technological overlay.",
+      "imageUrl": "https://images.unsplash.com/photo-1502637098811-fa9526d2b659?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjbGltYXRlJTIwdGVjaHxlbnwwfHx8fDE3NjYzNDU4NTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "climate tech"
+    }
+  ]
 }
