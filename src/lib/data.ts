@@ -15,7 +15,7 @@ export const values: Value[] = [
   {
     icon: BrainCircuit,
     title: 'Execute with Discipline',
-    description: 'Combine long-term vision with a relentless focus on execution and operational excellence.',
+    description: 'Combine long-term vision with a relentless focus on a disciplined approach to execution and operational excellence.',
   }
 ];
 
