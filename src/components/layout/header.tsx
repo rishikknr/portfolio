@@ -8,7 +8,7 @@ import { Logo } from '@/components/logo';
 
 const navItems = [
   { name: 'Home', href: '/' },
-  { name: 'Ventures', href: '/ventures' },
+  { name: 'Ventures', href: '/#ventures' },
   { name: 'Achievements', href: '/#achievements' },
   { name: 'Values', href: '/#values' },
   { name: 'Contact', href: '/#contact' },
