@@ -12,8 +12,15 @@ export function Logo({ className, ...props }: React.SVGProps<SVGSVGElement>) {
       {...props}
     >
       <path
-        d="M35.333 29.167c-5.523 0-10-4.477-10-10s4.477-10 10-10c5.522 0 10 4.477 10 10s-4.478 10-10 10zm29.334 0c-5.523 0-10-4.477-10-10s4.477-10 10-10c5.522 0 10 4.477 10 10s-4.478 10-10 10z"
+        d="M35.333 29.167c-5.523 0-10-4.477-10-10s4.477-10 10-10c5.522 0 10 4.477 10 10s-4.478 10-10 10z"
         stroke="currentColor"
+        strokeWidth="5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M64.667 29.167c-5.523 0-10-4.477-10-10s4.477-10 10-10c5.522 0 10 4.477 10 10s-4.478 10-10 10z"
+        stroke="hsl(var(--accent))"
         strokeWidth="5"
         strokeLinecap="round"
         strokeLinejoin="round"
