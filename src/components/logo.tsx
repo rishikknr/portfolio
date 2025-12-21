@@ -12,31 +12,37 @@ export function Logo({ className, ...props }: React.SVGProps<SVGSVGElement>) {
       {...props}
     >
       <defs>
-        <linearGradient id="gold-gradient" x1="0%" y1="50%" x2="100%" y2="50%">
-          <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.8" />
-          <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="1" />
-          <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.8" />
+        <linearGradient id="gold-gradient" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#F7D06B" />
+          <stop offset="50%" stopColor="#C6A046" />
+          <stop offset="100%" stopColor="#F7D06B" />
         </linearGradient>
       </defs>
-      <path
-        d="M45.58,28.14,38.3,37.38H30.13l9.4-12.2-8.6-11.23h8.33l6.05,8.19,5.91-8.19h8.33L51,25.13l9.44,12.25H52.2Z"
+      <text 
+        x="50%" 
+        y="50%" 
+        dy=".3em" 
+        textAnchor="middle" 
+        fontFamily="Inter, sans-serif" 
+        fontSize="30" 
+        fontWeight="bold" 
         fill="url(#gold-gradient)"
+        stroke="hsl(var(--primary-foreground))"
+        strokeWidth="0.3"
+      >
+        KNR
+      </text>
+      <path 
+        d="M67.5,22.5 C50,0,15,0,15,22.5 C15,45,50,45,67.5,22.5" 
+        stroke="url(#gold-gradient)" 
+        strokeWidth="5" 
+        fill="none" 
       />
-      <path
-        d="M93.37,13.95H78.85v5.36H92.3v5.09H78.85v7.29h14.83v5.36H72.4V8.59h20.94Z"
-        fill="url(#gold-gradient)"
-      />
-      <path
-        d="M67.5 22.5 C 50 0, 15 0, 15 22.5 C 15 45, 50 45, 67.5 22.5"
-        stroke="url(#gold-gradient)"
-        strokeWidth="4"
-        fill="none"
-      />
-      <path
-        d="M67.5 22.5 C 85 45, 120 45, 120 22.5 C 120 0, 85 0, 67.5 22.5"
-        stroke="url(#gold-gradient)"
-        strokeWidth="4"
-        fill="none"
+      <path 
+        d="M67.5,22.5 C85,45,120,45,120,22.5 C120,0,85,0,67.5,22.5" 
+        stroke="url(#gold-gradient)" 
+        strokeWidth="5" 
+        fill="none" 
       />
     </svg>
   );
