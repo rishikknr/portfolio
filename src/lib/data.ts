@@ -1,4 +1,23 @@
-import type { Venture, Achievement } from './types';
+import { HandHeart, Scale, BrainCircuit } from 'lucide-react';
+import type { Venture, Achievement, Value } from './types';
+
+export const values: Value[] = [
+  {
+    icon: HandHeart,
+    title: 'Build for Impact',
+    description: 'Focus on solving problems that create measurable, positive change in people\'s lives.',
+  },
+  {
+    icon: Scale,
+    title: 'Design for Scale',
+    description: 'Architect systems that are not just functional but resilient, reliable, and ready for growth.',
+  },
+  {
+    icon: BrainCircuit,
+    title: 'Execute with Discipline',
+    description: 'Combine long-term vision with a relentless focus on execution and operational excellence.',
+  }
+];
 
 export const ventures: Venture[] = [
   {

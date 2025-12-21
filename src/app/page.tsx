@@ -1,9 +1,9 @@
 import AchievementsSection from '@/components/sections/achievements-section';
-import FounderJourneySection from '@/components/sections/founder-journey-section';
 import Header from '@/components/layout/header';
 import HeroSection from '@/components/sections/hero-section';
 import VenturesSection from '@/components/sections/ventures-section';
 import Footer from '@/components/layout/footer';
+import ValuesSection from '@/components/sections/values-section';
 
 export default function Home() {
   return (
@@ -11,9 +11,9 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <HeroSection />
-        <FounderJourneySection />
         <VenturesSection />
         <AchievementsSection />
+        <ValuesSection />
       </main>
       <Footer />
     </div>

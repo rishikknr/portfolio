@@ -1,13 +1,12 @@
 "use client";
 
 import React from 'react';
-import { cn } from '@/lib/utils';
 
 const navItems = [
   { name: 'Home', href: '#home' },
-  { name: 'Founder Journey', href: '#journey' },
   { name: 'Ventures', href: '#ventures' },
   { name: 'Achievements', href: '#achievements' },
+  { name: 'Values', href: '#values' },
   { name: 'Contact', href: '#contact' },
 ];
 
