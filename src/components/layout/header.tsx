@@ -16,11 +16,13 @@ export default function Header() {
   const pathname = usePathname();
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, href: string) => {
-    if (pathname === '/') {
-      e.preventDefault();
-      const targetId = href.substring(1);
-      const elem = document.getElementById(targetId);
-      elem?.scrollIntoView({ behavior: 'smooth' });
+    e.preventDefault();
+    const targetId = href.substring(2); // Remove '/#'
+    const elem = document.getElementById(targetId);
+    if (elem) {
+      elem.scrollIntoView({
+        behavior: 'smooth',
+      });
     }
   };
 
@@ -30,22 +32,25 @@ export default function Header() {
         <nav className="flex items-center gap-4 text-sm sm:gap-6">
           {navItems.map((item) => {
             const isHomePage = pathname === '/';
-            let finalHref = item.href;
-            
-            // If it's a hash link on the homepage, use just the hash for smooth scroll.
-            if (item.href.startsWith('/#') && isHomePage) {
-              finalHref = `#${item.href.substring(2)}`;
+            const isHashLink = item.href.startsWith('/#');
+
+            if (isHashLink && isHomePage) {
+              return (
+                <a
+                  key={item.name}
+                  href={item.href.substring(1)} // Use just '#section' for anchor
+                  onClick={(e) => handleScroll(e, item.href)}
+                  className="font-medium text-muted-foreground transition-colors hover:text-primary cursor-pointer"
+                >
+                  {item.name}
+                </a>
+              );
             }
 
             return (
               <Link
                 key={item.name}
-                href={finalHref}
-                onClick={(e) => {
-                  if (finalHref.startsWith('#')) {
-                     handleScroll(e, finalHref);
-                  }
-                }}
+                href={item.href}
                 className="font-medium text-muted-foreground transition-colors hover:text-primary"
               >
                 {item.name}
