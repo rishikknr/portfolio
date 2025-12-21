@@ -16,16 +16,11 @@ export default function Header() {
   const pathname = usePathname();
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, href: string) => {
-    if (href.startsWith('/#')) {
-      const targetId = href.substring(2); 
-      if (pathname === '/') {
-        e.preventDefault();
-        const elem = document.getElementById(targetId);
-        elem?.scrollIntoView({ behavior: 'smooth' });
-      } else {
-        // Let the default link behavior handle navigation to the homepage and then scroll.
-        // Modern browsers will automatically scroll to the hash.
-      }
+    if (pathname === '/') {
+      e.preventDefault();
+      const targetId = href.substring(1);
+      const elem = document.getElementById(targetId);
+      elem?.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -36,22 +31,19 @@ export default function Header() {
           {navItems.map((item) => {
             const isHomePage = pathname === '/';
             let finalHref = item.href;
-
-            // If it's a hash link and we are not on the homepage, prepend '/'
-            if (item.href.startsWith('/#') && !isHomePage) {
-               // The link is already correct
-            } else if (item.href.startsWith('/#') && isHomePage) {
-              // On homepage, make it just the hash for smooth scroll to work
+            
+            // If it's a hash link on the homepage, use just the hash for smooth scroll.
+            if (item.href.startsWith('/#') && isHomePage) {
               finalHref = `#${item.href.substring(2)}`;
             }
-            
+
             return (
               <Link
                 key={item.name}
                 href={finalHref}
                 onClick={(e) => {
-                  if (item.href.startsWith('/#')) {
-                     handleScroll(e, item.href);
+                  if (finalHref.startsWith('#')) {
+                     handleScroll(e, finalHref);
                   }
                 }}
                 className="font-medium text-muted-foreground transition-colors hover:text-primary"
