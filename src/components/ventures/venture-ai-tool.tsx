@@ -1,6 +1,7 @@
 "use client";
 
-import { useFormState, useFormStatus } from 'react-dom';
+import { useActionState } from 'react';
+import { useFormStatus } from 'react-dom';
 import { getVentureInsightsAction } from '@/app/actions/get-venture-insights';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -31,7 +32,7 @@ function SubmitButton() {
 }
 
 export default function VentureAITool({ ventures }: VentureAIToolProps) {
-  const [state, formAction] = useFormState(getVentureInsightsAction, initialState);
+  const [state, formAction] = useActionState(getVentureInsightsAction, initialState);
   const { toast } = useToast();
 
   useEffect(() => {
