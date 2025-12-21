@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { cn } from '@/lib/utils';
 
 const navItems = [
   { name: 'Home', href: '/' },
@@ -26,7 +27,7 @@ export default function Header() {
         });
       }
     }
-    // If not on the homepage, let the default Link behavior handle navigation.
+    // If not on the homepage, the Link component will handle navigation.
   };
 
   return (
@@ -35,25 +36,17 @@ export default function Header() {
         <nav className="flex items-center gap-4 text-sm sm:gap-6">
           {navItems.map((item) => {
             const isHashLink = item.href.startsWith('/#');
-
-            if (isHashLink) {
-              return (
-                <Link
-                  key={item.name}
-                  href={pathname === '/' ? item.href.substring(1) : `/${item.href}`}
-                  onClick={(e) => handleScroll(e, item.href)}
-                  className="font-medium text-muted-foreground transition-colors hover:text-primary cursor-pointer"
-                >
-                  {item.name}
-                </Link>
-              );
-            }
-
+            const linkHref = isHashLink && pathname !== '/' ? `/${item.href}` : item.href;
+            
             return (
               <Link
                 key={item.name}
-                href={item.href}
-                className="font-medium text-muted-foreground transition-colors hover:text-primary"
+                href={linkHref}
+                onClick={isHashLink && pathname === '/' ? (e) => handleScroll(e, item.href) : undefined}
+                className={cn(
+                  "font-medium text-muted-foreground transition-colors hover:text-primary",
+                  isHashLink && pathname === '/' && "cursor-pointer"
+                )}
               >
                 {item.name}
               </Link>
