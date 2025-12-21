@@ -41,11 +41,11 @@ export default function HeroSection() {
         <div className="relative flex h-full min-h-[300px] w-full items-center justify-center lg:min-h-[400px]">
           <div className="group aspect-[4/5] h-full max-h-[500px] w-full max-w-[400px]">
              <Image
-              src="https://picsum.photos/seed/hero-portrait/600/750"
+              src="https://picsum.photos/seed/knr-portrait/600/750"
               alt="KNR Rishik"
               width={600}
               height={750}
-              className="h-full w-full object-cover transition-all duration-500 group-hover:scale-105"
+              className="h-full w-full object-contain transition-all duration-500 group-hover:scale-105"
               data-ai-hint="professional portrait"
               priority
             />
