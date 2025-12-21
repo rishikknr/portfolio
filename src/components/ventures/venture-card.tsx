@@ -32,7 +32,15 @@ export default function VentureCard({ venture, reverse = false }: VentureCardPro
         </p>
       </div>
        <div className="aspect-video overflow-hidden rounded-xl border border-border/20 shadow-lg shadow-black/20">
-        {placeholder && (
+        {venture.videoUrl ? (
+          <iframe
+            className="h-full w-full"
+            src={venture.videoUrl}
+            title={venture.name}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        ) : placeholder && (
           <Image
             src={placeholder.imageUrl}
             alt={venture.name}

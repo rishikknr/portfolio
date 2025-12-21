@@ -31,7 +31,8 @@ export const ventures: Venture[] = [
       'Compliance-driven design to integrate with formal financial systems',
     ],
     vision: 'To formalize trust, not to replace tradition.',
-    imageId: 'venture-sanchaya'
+    imageId: 'venture-sanchaya',
+    videoUrl: 'https://www.youtube.com/embed/P2VKhyACxks'
   },
   {
     name: 'Revive',
@@ -44,7 +45,8 @@ export const ventures: Venture[] = [
       'Designed for scalability and offline functionality',
     ],
     vision: 'To build resilient healthcare systems for underserved communities.',
-    imageId: 'venture-revive'
+    imageId: 'venture-revive',
+    videoUrl: 'https://www.youtube.com/embed/HCcH3KKCWRw'
   },
   {
     name: 'NeuroDam',
@@ -57,7 +59,8 @@ export const ventures: Venture[] = [
       'Focused on public impact and climate resilience',
     ],
     vision: 'To leverage AI for proactive climate risk management.',
-    imageId: 'venture-neurodam'
+    imageId: 'venture-neurodam',
+    videoUrl: 'https://www.youtube.com/embed/Kbqi_cKUBXA'
   }
 ];
 

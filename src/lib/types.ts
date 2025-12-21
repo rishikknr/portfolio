@@ -8,6 +8,7 @@ export type Venture = {
   details: string[];
   vision: string;
   imageId: string;
+  videoUrl?: string;
 };
 
 export type Achievement = {
