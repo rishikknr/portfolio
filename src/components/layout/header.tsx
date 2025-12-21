@@ -16,14 +16,17 @@ export default function Header() {
   const pathname = usePathname();
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, href: string) => {
-    e.preventDefault();
-    const targetId = href.substring(2); // Remove '/#'
-    const elem = document.getElementById(targetId);
-    if (elem) {
-      elem.scrollIntoView({
-        behavior: 'smooth',
-      });
+    if (pathname === '/') {
+      e.preventDefault();
+      const targetId = href.substring(2); // Remove '/#'
+      const elem = document.getElementById(targetId);
+      if (elem) {
+        elem.scrollIntoView({
+          behavior: 'smooth',
+        });
+      }
     }
+    // If not on the homepage, let the default Link behavior handle navigation.
   };
 
   return (
@@ -31,19 +34,18 @@ export default function Header() {
       <div className="container flex h-14 max-w-screen-2xl items-center justify-center md:justify-start">
         <nav className="flex items-center gap-4 text-sm sm:gap-6">
           {navItems.map((item) => {
-            const isHomePage = pathname === '/';
             const isHashLink = item.href.startsWith('/#');
 
-            if (isHashLink && isHomePage) {
+            if (isHashLink) {
               return (
-                <a
+                <Link
                   key={item.name}
-                  href={item.href.substring(1)} // Use just '#section' for anchor
+                  href={pathname === '/' ? item.href.substring(1) : `/${item.href}`}
                   onClick={(e) => handleScroll(e, item.href)}
                   className="font-medium text-muted-foreground transition-colors hover:text-primary cursor-pointer"
                 >
                   {item.name}
-                </a>
+                </Link>
               );
             }
 
