@@ -1,15 +1,17 @@
+
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import { ventures } from '@/lib/data';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
-export default function SanchayaPage() {
-  const venture = ventures.find(v => v.name === 'Sanchaya');
+export default function VentureDetailPage({ params }: { params: { ventureName: string } }) {
+  const venture = ventures.find(v => v.name.toLowerCase() === params.ventureName);
 
   if (!venture) {
-    return <div>Venture not found</div>;
+    notFound();
   }
 
   return (
@@ -34,7 +36,7 @@ export default function SanchayaPage() {
               {venture.videoUrl && (
                 <iframe
                   className="h-full w-full"
-                  src={venture.videoUrl}
+                  src={venture.videoUrl.replace('youtu.be/', 'youtube.com/embed/')}
                   title={venture.name}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
