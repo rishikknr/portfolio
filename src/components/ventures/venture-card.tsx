@@ -18,9 +18,12 @@ export default function VentureCard({ venture, reverse = false }: VentureCardPro
         <h3 className="font-headline text-3xl font-bold text-primary">{venture.name}</h3>
         <p className="mt-2 text-lg font-semibold text-foreground">{venture.tagline}</p>
         
-        <div className="mt-6 space-y-4">
+        <div className="mt-6 space-y-3">
           {venture.details.map((detail, index) => (
-            <p key={index} className="text-muted-foreground">{detail}</p>
+            <div key={index} className="flex items-start gap-3">
+              <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
+              <span className="text-muted-foreground">{detail}</span>
+            </div>
           ))}
         </div>
         <p className="mt-6 border-l-2 border-primary/50 pl-4 italic text-muted-foreground/80">
