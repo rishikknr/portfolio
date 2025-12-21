@@ -31,7 +31,7 @@ export default function HeroSection() {
           </p>
           <div className="mt-8 flex flex-wrap justify-start gap-4">
             <Button asChild size="lg">
-              <a href="#ventures" onClick={(e) => handleScroll(e, '#ventures')}>View Ventures</a>
+              <a href="#ventures">View Ventures</a>
             </Button>
             <Button asChild size="lg" variant="outline">
               <a href="#contact" onClick={(e) => handleScroll(e, '#contact')}>Contact</a>
