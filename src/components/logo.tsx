@@ -29,23 +29,13 @@ export function Logo({ className, ...props }: React.SVGProps<SVGSVGElement>) {
                 <feMergeNode in="SourceGraphic"/>
             </feMerge>
         </filter>
-        <mask id="knr-mask">
-            <rect width="250" height="100" fill="white" />
-            <g fill="black">
-                {/* K */}
-                <path d="M55 35 L 55 65 M 70 50 L 55 35 L 70 35 L 85 50 L 70 65 L 55 65 L 70 50" stroke="black" strokeWidth="6" strokeLinejoin="round" />
-                {/* N */}
-                <path d="M108 65 L 108 35 L 125 65 L 142 35 L 142 65" stroke="black" strokeWidth="7" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                {/* R */}
-                <path d="M165 65 L 165 35 L 185 35 A 15 15 0 0 1 185 50 L 175 50 L 195 65" stroke="black" strokeWidth="7" fill="none" strokeLinejoin="round" />
-            </g>
-        </mask>
       </defs>
       <g style={{ filter: 'url(#subtle-shadow)' }}>
         <path 
-            d="M50,50 C-10,0 110,0 125,50 C140,100 260,100 200,50 C310,0 140,100 125,50 C110,0 0,100 50,50 Z"
-            fill="url(#logo-gradient-gold)"
-            mask="url(#knr-mask)"
+            d="M 100,50 C 100,25 150,25 150,50 C 150,75 100,75 100,50 Z M 150,50 C 150,25 200,25 200,50 C 200,75 150,75 150,50 Z"
+            stroke="url(#logo-gradient-gold)"
+            strokeWidth="10"
+            fill="none"
         />
       </g>
     </svg>
