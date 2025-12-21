@@ -17,14 +17,10 @@ export default function VentureCard({ venture, reverse = false }: VentureCardPro
       <div className={cn('md:pr-8', reverse && 'md:order-last md:pl-8 md:pr-0')}>
         <h3 className="font-headline text-3xl font-bold text-primary">{venture.name}</h3>
         <p className="mt-2 text-lg font-semibold text-foreground">{venture.tagline}</p>
-        <p className="mt-4 text-muted-foreground">{venture.story}</p>
         
-        <div className="mt-6 space-y-3">
+        <div className="mt-6 space-y-4">
           {venture.details.map((detail, index) => (
-            <div key={index} className="flex items-start gap-3">
-              <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
-              <span className="text-muted-foreground">{detail}</span>
-            </div>
+            <p key={index} className="text-muted-foreground">{detail}</p>
           ))}
         </div>
         <p className="mt-6 border-l-2 border-primary/50 pl-4 italic text-muted-foreground/80">
