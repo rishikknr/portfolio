@@ -18,14 +18,15 @@ export default function Header() {
   const pathname = usePathname();
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, href: string) => {
-    e.preventDefault();
-    const targetId = href.substring(1);
-    const elem = document.getElementById(targetId);
+    const targetId = href.substring(href.indexOf('#'));
     
     if (pathname === '/') {
+        e.preventDefault();
+        const elem = document.getElementById(targetId.substring(1));
         elem?.scrollIntoView({ behavior: 'smooth' });
     } else {
-        window.location.href = `/${href}`;
+        // No need to prevent default, let the browser handle the navigation
+        // to the new page with the hash.
     }
   };
 
@@ -41,10 +42,11 @@ export default function Header() {
             const isHashLink = item.href.startsWith('/#');
             
             if (isHashLink) {
+              const href = pathname === '/' ? item.href.substring(1) : `/${item.href.substring(1)}`;
               return (
                  <a
                   key={item.name}
-                  href={item.href}
+                  href={href}
                   onClick={(e) => handleScroll(e, item.href)}
                   className="cursor-pointer font-medium text-muted-foreground transition-colors hover:text-primary"
                 >
