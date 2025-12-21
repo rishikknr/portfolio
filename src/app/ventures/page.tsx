@@ -5,7 +5,7 @@ import VenturesSection from '@/components/sections/ventures-section';
 import Footer from '@/components/layout/footer';
 import ValuesSection from '@/components/sections/values-section';
 
-export default function AllVenturesPage() {
+export default function VenturesPage() {
   return (
     <div className="flex min-h-screen flex-col bg-background">
       <Header />
