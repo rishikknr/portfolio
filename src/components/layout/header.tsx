@@ -1,13 +1,15 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { useTheme } from 'next-themes';
 import { cn } from '@/lib/utils';
-import { Logo } from '@/components/logo';
+import { Moon, Sun } from 'lucide-react'; // Ensure you have lucide-react installed
+import { Button } from '@/components/ui/button';
 
 const navItems = [
-  { name: 'Home', href: '/' },
   { name: 'Ventures', href: '/#ventures' },
   { name: 'Achievements', href: '/#achievements' },
   { name: 'Values', href: '/#values' },
@@ -16,59 +18,85 @@ const navItems = [
 
 export default function Header() {
   const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, href: string) => {
     const targetId = href.substring(href.indexOf('#'));
-    
     if (pathname === '/') {
         e.preventDefault();
         const elem = document.getElementById(targetId.substring(1));
         elem?.scrollIntoView({ behavior: 'smooth' });
-    } else {
-        // No need to prevent default, let the browser handle the navigation
-        // to the new page with the hash.
     }
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 max-w-screen-2xl items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
-          <Logo className="h-8 w-auto text-primary" />
+    <header className={cn(
+        "fixed top-0 z-50 w-full transition-all duration-300",
+        scrolled 
+          ? "bg-background/80 backdrop-blur-md border-b border-border/40 py-2 shadow-sm" 
+          : "bg-transparent py-6"
+    )}>
+      <div className="container flex items-center justify-between">
+        
+        {/* LOGO */}
+        <Link href="/" className="relative h-10 w-32 md:h-12 md:w-40 transition-opacity hover:opacity-80">
+            {/* Using CSS filter to invert logo in dark mode if needed, or stick to one color */}
+            <Image 
+                src="/assets/logo.png" 
+                alt="KNR Logo" 
+                fill 
+                className="object-contain object-left dark:brightness-100 brightness-0" // Adapts logo color
+                priority
+            />
         </Link>
 
-        <nav className="hidden items-center gap-4 text-sm sm:gap-6 md:flex">
-          {navItems.map((item) => {
-            const isHashLink = item.href.startsWith('/#');
-            
-            if (isHashLink) {
-              const href = pathname === '/' ? item.href.substring(1) : `/${item.href.substring(1)}`;
-              return (
-                 <a
-                  key={item.name}
-                  href={href}
-                  onClick={(e) => handleScroll(e, item.href)}
-                  className="cursor-pointer font-medium text-muted-foreground transition-colors hover:text-primary"
-                >
-                  {item.name}
-                </a>
-              )
-            }
+        <div className="flex items-center gap-6">
+            {/* NAV ITEMS */}
+            <nav className="hidden md:flex items-center gap-1">
+            {navItems.map((item) => {
+                const isHashLink = item.href.startsWith('/#');
+                const href = pathname === '/' && isHashLink ? item.href.substring(1) : item.href;
+                
+                return (
+                    <a
+                    key={item.name}
+                    href={href}
+                    onClick={(e) => isHashLink ? handleScroll(e, item.href) : undefined}
+                    className="relative px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground group"
+                    >
+                    {item.name}
+                    <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-yellow-500 transition-all duration-300 group-hover:w-1/2"></span>
+                    </a>
+                )
+            })}
+            </nav>
 
-            return (
-              <Link
-                key={item.name}
-                href={item.href}
-                className={cn(
-                  "font-medium text-muted-foreground transition-colors hover:text-primary",
-                  pathname === item.href && "text-primary"
-                )}
-              >
-                {item.name}
-              </Link>
-            );
-          })}
-        </nav>
+            {/* THEME TOGGLE BUTTON */}
+            {mounted && (
+                <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                    className="rounded-full hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-transform active:scale-95"
+                >
+                    {theme === 'dark' ? (
+                        <Sun className="h-5 w-5 text-yellow-400 fill-yellow-400" />
+                    ) : (
+                        <Moon className="h-5 w-5 text-slate-900 fill-slate-900" />
+                    )}
+                    <span className="sr-only">Toggle theme</span>
+                </Button>
+            )}
+        </div>
       </div>
     </header>
   );
