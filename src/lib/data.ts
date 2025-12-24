@@ -1,4 +1,4 @@
-import { HandHeart, Scale, BrainCircuit } from 'lucide-react';
+import { HandHeart, Scale, BrainCircuit, Trophy, Award, Mic, Users, Star } from 'lucide-react';
 import type { Venture, Achievement, Value } from './types';
 
 export const values: Value[] = [
@@ -65,10 +65,36 @@ export const ventures: Venture[] = [
 ];
 
 export const achievements: Achievement[] = [
-  { title: 'National Winner', organization: 'EY Techathon 5.0' , description: 'Recognized for innovative solutions in technology.'},
-  { title: 'Finalist', organization: 'Hult Prize @ IIT Hyderabad', description: 'Competed with a social enterprise concept.' },
-  { title: 'Semi-Finalist', organization: 'Smart India Hackathon, Kavach', description: 'Developed solutions for national security challenges.' },
-  { title: 'Mentored 1,000+ students', organization: 'FILO Verified Tutor', description: 'Guided students in STEM subjects and problem-solving.' }
+  { 
+    title: 'National Winner', 
+    organization: 'EY Techathon 5.0', 
+    description: 'Emerging victorious in a national-level challenge for innovative tech solutions.'
+  },
+  { 
+    title: 'Finalist', 
+    organization: 'Hult Prize @ IIT Hyderabad', 
+    description: 'Selected for social impact enterprise concepts addressing global challenges.' 
+  },
+  { 
+    title: 'Semi-Finalist', 
+    organization: 'Smart India Hackathon, Kavach', 
+    description: 'Architecting national security solutions for the Ministry of Home Affairs.' 
+  },
+  { 
+    title: 'Recognized Innovator', 
+    organization: 'International Startup Festival', 
+    description: ' showcased ventures to global investors and industry leaders in Hyderabad.' 
+  },
+  { 
+    title: 'National Finalist', 
+    organization: 'Hexathon by Hexagon', 
+    description: 'Top-tier finalist for building industrial digital reality solutions.' 
+  },
+  { 
+    title: 'STEM Mentor', 
+    organization: 'FILO Verified Tutor', 
+    description: 'Guided 1,000+ students in complex problem-solving and engineering concepts.' 
+  }
 ];
 
 export const founderJourney = {
